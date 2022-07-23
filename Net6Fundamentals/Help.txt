@@ -1,0 +1,4 @@
+﻿For Database Migration, Run the following commands
+Add-Migration Message
+Update-Dataase
+

@@ -8,12 +8,21 @@ namespace Net6Fundamentals.Controllers
         private readonly IPieRepository _pieRepository;
         private readonly ICategoryRepository _categoryRepository;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pieRepository"></param>
+        /// <param name="categoryRepository"></param>
         public PieController(IPieRepository pieRepository, ICategoryRepository categoryRepository)
         {
             _pieRepository = pieRepository;
             _categoryRepository = categoryRepository;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult List()
         {
             PieListViewModel piesListViewModel = new PieListViewModel(_pieRepository.AllPies, "Cheese cakes");
