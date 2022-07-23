@@ -1,18 +1,68 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.pies-of-the-week {
+    margin-top: 52px;
+}
+
+.pie-button {
+    position: relative;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+}
+
+.pie-card {
+    border: none;
+}
+
+.card-body.pie-button {
+    padding: 0px;
+}
+
+.pie-button > h4, .pie-button > .h4 {
+    margin-bottom: 0px;
+}
+
+.pie-link {
+    text-decoration: none;
+}
+
+
+.carousel-indicators {
+    justify-content: end;
+    margin-right: 3%;
+}
+
+    .carousel-indicators button {
+        border-radius: 50%;
+    }
+
+.logo-mark {
+    position: relative;
+    height: 167.95px;
+    width: 144.06px;
+    top: -84px;
+    margin-bottom: -44px;
+}
+
+.pies-of-the-week {
+    margin-top: 52px;
 }

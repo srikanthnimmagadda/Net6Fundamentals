@@ -28,5 +28,19 @@ namespace Net6Fundamentals.Controllers
             PieListViewModel piesListViewModel = new PieListViewModel(_pieRepository.AllPies, "Cheese cakes");
             return View(piesListViewModel);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IActionResult Details(int id)
+        {
+            var pie = _pieRepository.GetPieById(id);
+            if (pie == null)
+                return NotFound();
+
+            return View(pie);
+        }
     }
 }
