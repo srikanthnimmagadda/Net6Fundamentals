@@ -34,7 +34,7 @@ namespace Net6Fundamentals.Models
 
         public IEnumerable<Pie> SearchPies(string searchQuery)
         {
-            throw new NotImplementedException();
+            return _shopDbContext.Pies.Where(p => p.Name.Contains(searchQuery));
         }
     }
 }

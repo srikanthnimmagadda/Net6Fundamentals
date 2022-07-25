@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Net6Fundamentals.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,13 +13,19 @@ builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCa
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<ShopDbContext>(options => {
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:ShopDbContextConnection"]);
 });
+
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -47,6 +54,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
+app.MapBlazorHub();
+app.MapFallbackToPage("/app/{*catchall}", "/App/Index");
 
 DbInitializer.Seed(app);
 

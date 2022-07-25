@@ -62,5 +62,14 @@ namespace Net6Fundamentals.Controllers
 
             return View(pie);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Search()
+        {
+            return View();
+        }
     }
 }
