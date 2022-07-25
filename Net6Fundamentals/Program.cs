@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Net6Fundamentals.Models;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("ShopDbContextConnection") ?? 
+    throw new InvalidOperationException("Connection string 'ShopDbContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -21,9 +24,11 @@ builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<ShopDbContext>(options => {
-    options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:ShopDbContextConnection"]);
+    options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddEntityFrameworkStores<ShopDbContext>();
 
 builder.Services.AddServerSideBlazor();
 
@@ -46,7 +51,7 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

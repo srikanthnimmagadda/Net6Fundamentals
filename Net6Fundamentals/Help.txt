@@ -2,3 +2,21 @@
 Add-Migration Message
 Update-Dataase
 
+To Add Authentication and Authorization
+
+Add the following packages
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
+
+Update the DbContext Class to inherit from IdentityDbContext
+Run the Add-Migration adn then Update-Database
+
+Manual Approch to implement Login, Register and so on
+Otherwise Scaffolding - Razor class library ==> Reuse Functionality, Can be overridden
+
+Steps To Add Scaffolding => UserManager<IdentityUser>, SignInManager<IdentityUser>
+	Use built in Razor Class Lirary
+	Scaffold Items
+	Layout Changes
+Scaffolding Login and Register functionality
+	Right Click on Project => Add => New Scaffolded Item  => Select Identity from left Menu => Choose Identity => Add
